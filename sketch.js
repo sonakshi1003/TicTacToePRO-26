@@ -1,12 +1,9 @@
 function checkForWinner() {
   console.log("checking for winner...")
   var winner
-  var playerOne = getPlayerOne() //playerOne is always blue!
-    //console.log('checkForWinner, playerOne is: ', playerOne)
+  var playerOne = getPlayerOne() ;
 var computer = (playerOne === "X") ? "O" : "X"
-//there are 8 winningCombos: 
-  //three rows, three columns, two diagonals
-  //refactor below.... this is not DRY!
+
   var blueWin1 = $("#one.blue, #two.blue, #three.blue").length === 3
   var blueWin2 = $("#four.blue, #five.blue, #six.blue").length === 3
   var blueWin3 = $("#seven.blue, #eight.blue, #nine.blue").length === 3
@@ -23,19 +20,17 @@ var redWin1 = $("#one.red, #two.red, #three.red").length === 3
   var redWin6 = $("#three.red, #six.red, #nine.red").length === 3
   var redWin7 = $("#one.red, #five.red, #nine.red").length === 3
   var redWin8 = $("#seven.red, #five.red, #three.red").length === 3
-//var winningCombos = [x]
-  //refactor below too... not DRY at all!!!
-  //note: playerOne is always blue
+
   var blueWins = (blueWin1 || blueWin2 || blueWin3 || blueWin4 || blueWin5 || blueWin6 || blueWin7 || blueWin8)
 var redWins = (redWin1 || redWin2 || redWin3 || redWin4 || redWin5 || redWin6 || redWin7 || redWin8)
 var redCount = getRedCount()
-    //console.log('redCount is: ', redCount)
+    
   var blueCount = getBlueCount()
-    //console.log('blueCount is: ', blueCount)
+
   var fullGrid = redCount + blueCount
   console.log('fullGrid is: ', fullGrid)
 var draw = (fullGrid === 9) && (!blueWins) && (!redWins)
-if (blueWins) { //playerOne is always blue
+if (blueWins) {
     winner = blueWins
     console.log(`${playerOne} wins!`)
     $("#gameResult, #congratsOrSorry").removeClass("displayNone")
@@ -45,7 +40,7 @@ if (blueWins) { //playerOne is always blue
     disableRemainingItems()
     return winner
   }
-  if (redWins) { //red is computer
+  if (redWins) { 
     winner = redWins
     console.log(`${computer} wins!`)
     $("#gameResult, #congratsOrSorry").removeClass("displayNone")
